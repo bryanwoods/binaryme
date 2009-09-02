@@ -20,6 +20,11 @@ describe User do
     it 'increments User#count' do
       @creating_user.should change(User, :count).by(1)
     end
+    
+    it 'should not be a curator' do
+      user = Factory(:user)
+      user.curator.should be_false
+    end
   end
 
   #
