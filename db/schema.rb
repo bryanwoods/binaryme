@@ -9,7 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090902182934) do
+ActiveRecord::Schema.define(:version => 20090902222225) do
+
+  create_table "answers", :force => true do |t|
+    t.boolean  "response",   :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "questions", :force => true do |t|
     t.string   "body"
