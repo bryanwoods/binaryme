@@ -1,2 +1,21 @@
-<h1>MainPages#home</h1>
-<p>Find me in app/views/main_pages/home.html.erb</p>
+<h1>BinaryMe</h1>
+
+<p>
+  <%= flash[:notice] %>
+</p>
+
+<% if logged_in? %>
+  <p>
+    <%= link_to 'Log Out', logout_path %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to 'Log in', login_path %> | <%= link_to 'Sign Up', signup_path %>
+  </p>
+<% end %>
+
+<% if current_user.curator? %>
+  <p>
+    <a href="#">Curator Tools</a>
+  </p>
+<% end %>

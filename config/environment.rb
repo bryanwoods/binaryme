@@ -20,7 +20,7 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'nokogiri', :lib => false, :version => '1.2.3'
-  config.gem 'webrat', :lib => false, :version => '= 0.4.4'
+  config.gem 'webrat', :lib => false, :version => '= 0.5.1'
   config.gem 'thoughtbot-factory_girl', :lib => 'factory_girl', :source => 'http://gems.github.com', :version => '1.2.1'
   config.gem 'cucumber', :lib => false, :version => '= 0.3.3'
   config.gem 'rspec-rails', :lib => false, :version => '= 1.2.6'
