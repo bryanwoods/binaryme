@@ -11,6 +11,10 @@
       <p>
         <%= link_to 'Make Active', activate_question_path(question) %>
       </p>
+    <% elsif question.state == "active" && current_user.curator %>
+      <p>
+        <%= link_to 'Deactivate', deactivate_question_path(question) %>
+      </p>
     <% end %>
   </p>
 <% end %>

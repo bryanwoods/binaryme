@@ -22,5 +22,11 @@ class QuestionsController < ApplicationController
     redirect_to questions_path
     flash[:notice] = "Question activated."
   end
-
+  
+  def deactivate
+    @question = Question.find(params[:id])
+    @question.deactivate
+    redirect_to questions_path
+    flash[:notice] = "Question deactivated."
+  end
 end

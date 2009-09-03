@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :questions
   
   map.activate_question '/questions/activate/:id', :controller => 'questions', :action => 'activate'
+  map.deactivate_question '/questions/deactivate/:id', :controller => 'questions', :action => 'deactivate'
 
   map.resource :session
 
