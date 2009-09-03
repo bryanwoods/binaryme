@@ -14,8 +14,11 @@
   </p>
 <% end %>
 
-<% if current_user.curator? %>
+<% if logged_in? && current_user.curator? %>
   <p>
-    <a href="#">Curator Tools</a>
+    <h3>Curator Tools</h3>
+    <p>
+      <%= link_to 'View All Questions', questions_path %>
+    </p>
   </p>
 <% end %>

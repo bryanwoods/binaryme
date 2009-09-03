@@ -1,0 +1,16 @@
+<h1>Questions</h1>
+
+<p>
+  <%= flash[:notice] %>
+</p>
+
+<% for question in @questions %>
+  <p>
+    <%= question.body %> 
+    <% if question.state == "pending" && current_user.curator %>
+      <p>
+        <%= link_to 'Make Active', activate_question_path(question) %>
+      </p>
+    <% end %>
+  </p>
+<% end %>

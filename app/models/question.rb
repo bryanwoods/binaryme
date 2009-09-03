@@ -1,13 +1,17 @@
 class Question < ActiveRecord::Base
   validates_presence_of :body
   
-  state_machine :initial => :active do
+  state_machine :initial => :pending do
     event :activate do
-      transition :inactive => :active
+      transition [:inactive, :pending] => :active
+    end
+    
+    event :pend do
+      transition [:inactive, :active] => :pending
     end
 
     event :deactivate do
-      transition :active => :inactive
+      transition [:active, :pending] => :inactive
     end
   end
 end

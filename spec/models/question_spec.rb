@@ -4,7 +4,7 @@ describe Question do
   describe "being created" do
     it "should be in the activated state" do
       question = Factory(:question)
-      question.state.should == "active"
+      question.state.should == "pending"
     end
   end
   

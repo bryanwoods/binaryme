@@ -10,6 +10,8 @@ module NavigationHelpers
     
     when /the home page/
       root_path
+    when /the questions page/
+      questions_path
     # Add more mappings here.
     # Here is a more fancy example:
     #
