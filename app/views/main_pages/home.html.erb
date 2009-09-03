@@ -14,11 +14,15 @@
   </p>
 <% end %>
 
+<p>
+  <%= link_to 'Submit a Question', new_question_path %>
+</p>
+
 <% if logged_in? && current_user.curator? %>
   <p>
     <h3>Curator Tools</h3>
     <p>
-      <%= link_to 'View All Questions', questions_path %>
+      <%= link_to 'Add a Question', new_question_path %> | <%= link_to 'View All Questions', questions_path %>
     </p>
   </p>
 <% end %>

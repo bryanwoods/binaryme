@@ -60,4 +60,24 @@ Feature: Curators
     Then I should see "Question deactivated."
     And I should have 1 inactive question
     
+  Scenario: Curator adds a new question
+    Given I am a curator
+    And I log in as a curator
+    And I have no questions
+    And I am on the home page
+    And I follow "Add a Question"
+    And I add the question "I drink Irish whiskey"
+    Then I should see "Question added successfully."
+    And I should have 1 question
+    And I should have 1 active question
+  
+  Scenario: Non-curator adds a new question
+    Given I am a regular user
+    And I log in as a regular
+    And I am on the home page
+    And I follow "Submit a Question"
+    And I add the question "I drink Irish whiskey"
+    And I should have 1 question
+    And I should have 1 pending question
+    
     

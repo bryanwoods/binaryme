@@ -14,8 +14,22 @@ class QuestionsController < ApplicationController
   end
 
   def new
+    @question = Question.new
   end
   
+  def create
+    @question = Question.create!(params[:question])
+    if current_user.curator
+      @question.activate
+      @question.save
+    else
+      @question.save
+    end
+    
+    redirect_to questions_path
+    flash[:notice] = "Question added successfully."
+  end
+    
   def activate
     @question = Question.find(params[:id])
     @question.activate
