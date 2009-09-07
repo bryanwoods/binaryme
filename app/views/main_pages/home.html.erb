@@ -11,6 +11,9 @@
   <p>
     <%= link_to 'Edit My Profile', edit_user_path(current_user) %>
   </p>
+  <p>
+    <%= link_to 'Provide Responses', questions_path %>
+  </p>
 <% else %>
   <p>
     <%= link_to 'Log in', login_path %> | <%= link_to 'Sign Up', signup_path %>
