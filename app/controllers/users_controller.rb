@@ -2,6 +2,18 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+  
+  def edit 
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to edit_user_path(@user)
+      flash[:notice] = "Changes saved."
+    end
+  end
  
   def create
     logout_keeping_session!
@@ -14,7 +26,7 @@ class UsersController < ApplicationController
       # reset session
       self.current_user = @user # !! now logged in
       redirect_back_or_default('/')
-      flash[:notice] = "Thank you for signing up for BinaryMe."
+      flash[:notice] = "Welcome to BinaryMe, #{current_user.login}."
     else
       flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
       render :action => 'new'
