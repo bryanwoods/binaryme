@@ -13,7 +13,7 @@ class AccessControlTestController < ApplicationController
       @foo = { 'success' => params[:format]||'no fmt given'}
       format.html do render :text => "success"             end
       format.xml  do render :xml  => @foo, :status => :ok  end
-      format.json do render :json => @foo, :status => :ok  end
+      # format.json do render :json => @foo, :status => :ok  end
     end
   end
   def login_not_required
@@ -21,7 +21,7 @@ class AccessControlTestController < ApplicationController
       @foo = { 'success' => params[:format]||'no fmt given'}
       format.html do render :text => "success"             end
       format.xml  do render :xml  => @foo, :status => :ok  end
-      format.json do render :json => @foo, :status => :ok  end
+      # format.json do render :json => @foo, :status => :ok  end
     end
   end
 end

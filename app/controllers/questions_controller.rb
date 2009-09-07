@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_filter :find_question, :only => [:activate, :deactivate]
+  
   def index
     if current_user.curator
       @questions = Question.all
@@ -31,16 +33,28 @@ class QuestionsController < ApplicationController
   end
     
   def activate
-    @question = Question.find(params[:id])
     @question.activate
     redirect_to questions_path
-    flash[:notice] = "Question activated."
+    flash[:notice] = flash_question_state(@question.state)
   end
   
   def deactivate
-    @question = Question.find(params[:id])
     @question.deactivate
     redirect_to questions_path
-    flash[:notice] = "Question deactivated."
+    flash[:notice] = flash_question_state(@question.state)
+  end
+  
+  protected
+  
+  def find_question
+    @question = Question.find(params[:id])
+  end
+  
+  def flash_question_state(state)
+    if state == "inactive"
+      "Question deactivated."
+    else
+      "Question activated."
+    end
   end
 end
