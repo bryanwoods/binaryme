@@ -20,13 +20,23 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo
   
-  has_many :answers
+  has_many :questions
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :first_name, :last_name, :photo
-
+  
+  
+  def init_questions
+    active_questions = Question.with_state(:active)
+    self.questions.concat(active_questions) unless active_questions.blank?
+  end
+  
+  def refresh_questions
+    active_questions = Question.with_state(:active)
+    self.questions |= active_questions
+  end
 
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.

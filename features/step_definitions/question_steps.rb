@@ -33,4 +33,19 @@ Then /^I should have ([0-9]*) question$/ do |count|
   Question.count.should == count.to_i
 end
 
+Given /^the following active questions exist:$/ do |table|
+  table.hashes.each do |hash|
+    Factory(:question, hash)
+  end
+end
 
+Then /^that user should have ([0-9]*) questions$/ do |count|
+  user = User.find_by_login("mcmaloney")
+  user.questions.count.should == count.to_i
+end
+
+Given /^I add the following questions :$/ do |table|
+  table.hashes.each do |hash|
+    Factory(:question, hash)
+  end
+end

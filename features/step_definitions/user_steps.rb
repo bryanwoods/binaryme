@@ -54,5 +54,12 @@ Given /^I log in$/ do
   When %{I press "Log in"}
 end
 
+Given /^I log in as "([^\"]*)"$/ do |login|
+  @current_user = User.find_by_login(login)
+  visit login_path
+  When %{I fill in "Login" with "#{@current_user.login}"}
+  When %{I fill in "Password" with "#{@current_user.password}"}
+  When %{I press "Log in"}
+end
 
 
