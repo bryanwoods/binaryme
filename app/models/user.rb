@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo
   
-  has_many :questions
+  has_many :answers
+  has_many :questions, :through => :answers
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation

@@ -1,4 +1,6 @@
 class Question < ActiveRecord::Base
+  has_many :answers
+  
   validates_presence_of :body
   
   state_machine :initial => :pending do
