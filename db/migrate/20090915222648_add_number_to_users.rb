@@ -1,6 +1,6 @@
 class AddNumberToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :number, :integer
+    add_column :users, :number, :string
   end
 
   def self.down

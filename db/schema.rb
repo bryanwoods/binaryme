@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090915202802) do
+ActiveRecord::Schema.define(:version => 20090915222648) do
 
   create_table "answers", :force => true do |t|
     t.boolean  "response",    :default => false, :null => false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20090915202802) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer  "number"
+    t.string   "number"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

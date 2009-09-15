@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :first_name, :last_name, :photo, :number
   
+  
+  # Methods for response stats
   def num_of_answers
     "#{self.answers.count.to_s}"
   end
@@ -34,6 +36,11 @@ class User < ActiveRecord::Base
   def response_stats
     "#{self.num_of_answers}/#{Question.num_of_questions}"
   end
+  
+  
+  # NUMBER
+  
+  
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
