@@ -41,6 +41,15 @@ describe User do
     end
   end
   
+  describe "the number" do
+    it "should be as long as the number of active questions" do
+      user = Factory(:user)
+      Factory(:question)
+      Factory(:question)
+      user.number_length.should == 2
+    end
+  end
+  
   #
   # Validations
   #

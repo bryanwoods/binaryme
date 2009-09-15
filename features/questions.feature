@@ -16,6 +16,8 @@ Feature: Questions
     Then I should see "I smoke cigarettes"
     And I should see "I have green eyes"
     And I should not see "I like eggs"
+  
+    
     
  
       
