@@ -21,6 +21,15 @@ Given /^I log in as a (.*)$/ do |user_type|
   end
 end
 
+Given /^I am logged in as "([^\"]*)"$/ do |login|
+  @me = Factory(:user, :login => login)
+  visit login_path
+  When %{I fill in "Login" with "#{@me.login}"}
+  When %{I fill in "Password" with "#{@me.password}"}
+  When %{I press "Log in"}
+end
+
+
 Given /^there are no users$/ do
   User.delete_all
 end

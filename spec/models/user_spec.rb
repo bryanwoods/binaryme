@@ -25,26 +25,7 @@ describe User do
       user = Factory(:user)
       user.curator.should be_false
     end
-    
-    it 'should be given all the active questions' do
-      user = Factory(:user)
-      Factory(:question, :state => "active")
-      user.init_questions
-      user.questions.length.should == 1
-    end
   end
-  
-  describe 'loggin in' do
-    it 'should get all new active questions since the last login' do
-      user = Factory(:user)
-      Factory(:question, :state => "active")
-      user.init_questions
-      Factory(:question, :state => "active")
-      user.refresh_questions
-      user.questions.length.should == 2
-    end
-  end
-
   #
   # Validations
   #
