@@ -42,12 +42,19 @@ describe User do
   end
   
   describe "the number" do
-    it "should be as long as the number of active questions" do
+    it "should be zero when you are created" do
       user = Factory(:user)
-      Factory(:question)
-      Factory(:question)
-      user.number_length.should == 2
+      user.number.should == "0"
     end
+    
+    it "should update the number with zeros" do
+      user = Factory(:user)
+      Factory(:question, :state => "active")
+      Factory(:question, :state => "active")
+      user.check_num
+      user.number.should == "00"
+    end
+      
   end
   
   #

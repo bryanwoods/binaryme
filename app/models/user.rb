@@ -39,7 +39,23 @@ class User < ActiveRecord::Base
   
   
   # NUMBER
-  
+  def check_num
+    n = self.number.split("")
+    q = Question.with_state(:active).length
+    x = q - n.length
+    
+    if x > 0
+      x.times do
+        n << "0"
+      end
+      self.number = n.join("")
+      self.save
+    end
+  end
+
+  def number_length
+    self.number.split("").length
+  end
   
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
