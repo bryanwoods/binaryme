@@ -26,6 +26,21 @@ describe User do
       user.curator.should be_false
     end
   end
+  
+  describe "showing answers" do
+    it "should show how many questions the user has answered" do
+      user = Factory(:user)
+      user.num_of_answers.should == "0"
+    end
+    
+    it "should show the number of answers / the total number of questions" do
+      user = Factory(:user)
+      Factory(:question, :state => "active")
+      Factory(:question, :state => "active")
+      user.response_stats.should == "0/2"
+    end
+  end
+  
   #
   # Validations
   #

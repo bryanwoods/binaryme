@@ -16,4 +16,9 @@ class Question < ActiveRecord::Base
       transition [:active, :pending] => :inactive
     end
   end
+  
+  # Shows the count as a string
+  def self.num_of_questions
+    "#{self.with_state(:active).count.to_s}"
+  end
 end

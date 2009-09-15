@@ -2,11 +2,7 @@ class QuestionsController < ApplicationController
   before_filter :find_question, :only => [:activate, :deactivate]
   
   def index
-    if current_user.curator
-      @questions = Question.all
-    else
-      @questions = Question.with_state(:active)
-    end
+    find_questions_for_current_user_type 
   end
 
   def show

@@ -8,4 +8,14 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  def find_questions_for_current_user_type
+    unless !current_user
+      if current_user.curator
+        @questions = Question.all
+      else
+        @questions = Question.with_state(:active)
+      end
+    end
+  end
 end
