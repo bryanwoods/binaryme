@@ -49,3 +49,8 @@ Given /^I add the following questions :$/ do |table|
     Factory(:question, hash)
   end
 end
+
+When /^I create a question "([^\"]*)"$/ do |body|
+  Factory(:question, :body => body, :state => "active")
+end
+

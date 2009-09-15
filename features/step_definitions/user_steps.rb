@@ -71,4 +71,20 @@ Given /^I log in as "([^\"]*)"$/ do |login|
   When %{I press "Log in"}
 end
 
+When /^I log out$/ do
+  visit logout_path
+end
+
+Then /^my number should be "([^\"]*)"$/ do |number|
+  @me.number.should == number
+end
+
+When /^log back in as "([^\"]*)"$/ do |login|
+  visit login_path
+  When %{I fill in "Login" with "#{@me.login}"}
+  When %{I fill in "Password" with "#{@me.password}"}
+  When %{I press "Log in"}
+end
+
+
 

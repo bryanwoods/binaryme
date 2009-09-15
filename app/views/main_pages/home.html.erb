@@ -6,6 +6,9 @@
 
 <% if logged_in? %>
   <p>
+    <strong>Your Number: <%= current_user.number %></strong>
+  </p>
+  <p>
     <%= link_to 'Log Out', logout_path %>
   </p>
   <p>

@@ -53,9 +53,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def number_length
-    self.number.split("").length
-  end
   
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
